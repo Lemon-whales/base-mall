@@ -1,0 +1,129 @@
+/*
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2020-03-13 11:13:13
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2020-06-24 18:40:21
+ */
+
+/* animation: name duration timing-function delay iteration-count direction fill-mode play-state; */
+/* animation-name	指定要绑定到选择器的关键帧的名称
+    animation-duration	动画指定需要多少秒或毫秒完成
+    animation-timing-function	设置动画将如何完成一个周期
+    animation-delay	设置动画在启动前的延迟间隔。                默认值 0
+    animation-iteration-count	定义动画的播放次数。             默认值 1
+    animation-direction	指定是否应该轮流反向播放动画。           默认值 normal
+    animation-fill-mode	规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。
+    animation-play-state	指定动画是否正在运行或已暂停。
+    initial	设置属性为其默认值。 阅读关于 initial的介绍。
+    inherit	从父元素继承属性。 阅读关于 initinherital的介绍。
+  */
+/* animation-timing-function
+    linear	动画从头到尾的速度是相同的。	
+    ease	默认。动画以低速开始，然后加快，在结束前变慢。	
+    ease-in	动画以低速开始。	
+    ease-out	动画以低速结束。	
+    ease-in-out	动画以低速开始和结束。	
+    cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。
+  */
+/* animation-direction
+    normal	默认值。动画按正常播放。	
+    reverse	动画反向播放。	
+    alternate	动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。	
+    alternate-reverse	动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。	
+    initial	设置该属性为它的默认值。	
+    inherit	从父元素继承该属性。
+  */
+.bg-mask-disposable {
+  /* 适用于只弹出一次不再弹出的弹窗v-if */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  animation: showBgMask 0.4s ease-in-out 0s 1;
+  /* animation: showBgMask 0.4s cubic-bezier(.25,.1,.25,1) 0s 1 normal forwards; */
+}
+@keyframes showBgMask {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 点赞动画 */
+.praise-icon {
+  width: 80upx;
+  height: 80upx;
+  overflow: hidden;
+  background-position: 0 0;
+  background-size: 2400upx 80upx;
+  background-image: url("https://img-blog.csdnimg.cn/20200331111618290.png");
+  background-repeat: no-repeat;
+  -webkit-transition: background-position 0.3s steps(29);
+  transition: background-position 0.3s steps(29);
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.praise-icon.praised {
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  background-position: -2320upx 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp ease 0.3s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown ease 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn ease 0.3s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fade-out {
+  animation: fadeOut ease 0.3s forwards;
+}
