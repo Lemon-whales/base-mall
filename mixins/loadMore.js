@@ -17,7 +17,7 @@ module.exports = {
   },
   onPullDownRefresh() {
     this.$debounce.canDoFunction({
-      time: 2000,
+      time: 1000,
       immediate: true,
       key: "onPullDownRefresh",
       success: () => {
