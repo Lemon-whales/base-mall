@@ -15,7 +15,7 @@ export default {
 	data() {
 		return {
 			goodslist: [], //商品列表
-			pageId: 1, //pageId
+			pageId:1,//下一页标志
 			tabs: ['精选', '居家百货', '美食', '服饰', '配饰', '美妆', '内衣', '母婴', '箱包', '数码配件', '文娱车品'],
 			defaultIndex: 0,
 			nineCid: -1,//9块9分类
@@ -66,7 +66,7 @@ export default {
 				.callFunction({
 					name: 'nine_op_goods_list',
 					data: {
-						pageId: 1,
+						pageId: _this.pageId,
 						pageSize: 50, //9.9精选的类目id，分类id请求详情：-1-精选，1 -居家百货，2 -美食，3 -服饰，4 -配饰，5 -美妆，6 -内衣，7 -母婴，8 -箱包，9 -数码配件，10 -文娱车品
 						nineCid: _this.nineCid
 					}

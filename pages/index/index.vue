@@ -7,6 +7,13 @@
 -->
 <template>
 	<view class="page">
+		<view class="banner">
+			<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+				<swiper-item class="swiper-item" v-for="(item, index) of banner" :key="index" @click="topicGoodsList(item)">
+					<image class="swiper-img"  :src="item.banner[0]"  :alt="item.topicName"/>
+				</swiper-item>
+			</swiper>
+		</view>
 		<view class="padding-20"><goods-list :goodslist="goodslist"></goods-list></view>
 		<load-more v-if="goodslist.length > 0" :status="listLoading ? 'loading' : listPage == 0 ? 'nomore' : 'loadmore'"></load-more>
 	</view>
@@ -21,7 +28,8 @@ export default {
 	data() {
 		return {
 			goodslist: [], //商品列表
-			pageId: 1 //pageId
+			pageId:1,//下一页标志
+			banner:[],//轮播专题数组
 		};
 	},
 	components: {
@@ -29,6 +37,7 @@ export default {
 	},
 	onLoad() {
 		this.goodsList();
+		this.getBanner();
 	},
 	methods: {
 		refreshList() {
@@ -39,6 +48,17 @@ export default {
 			//拉取下一页数据
 			this.goodsList();
 		},
+		getBanner(){
+			//获取专题banner
+			let _this = this;
+			uniCloud
+				.callFunction({
+					name: 'topic_catalogue',
+				})
+				.then(res => {
+					_this.banner = res.result.data.data
+				})
+		},
 		goodsList() {
 			//获取商品列表
 			let _this = this;
@@ -47,7 +67,7 @@ export default {
 				.callFunction({
 					name: 'goods_list',
 					data: {
-						pageId: 1,
+						pageId: _this.pageId,
 						pageSize: 50, //每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200
 						sort: 0 //排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高
 					}
@@ -73,11 +93,35 @@ export default {
 					uni.stopPullDownRefresh();
 				});
 		},
+		topicGoodsList(data){
+			//进入主题列表页面
+			data = JSON.stringify(data)
+			data = encodeURIComponent(data)
+			uni.navigateTo({
+				url:`/pages/subPackages/index/topic_goods_list?data=${data}`
+			})
+		}
 	}
 };
 </script>
 
 <style scoped lang="scss">
+	.banner{
+		width: 100%;
+		height: 335upx;
+		.swiper{
+			width: 100%;
+			height: 335upx;
+		}
+		.swiper-item{
+			width: 100%;
+			height: 335upx;
+			.swiper-img{
+				width: 100%;
+				height: 335upx;
+			}
+		}
+	}
 	.page{
 		// background: #F2F2F2;
 	}

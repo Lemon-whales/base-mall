@@ -32,7 +32,17 @@
 				"navigationBarTitleText": "9块9包邮"
 			}
 		}
+
 	],
+	"subPackages": [{
+		"root": "pages/subPackages/index",
+		"pages": [{
+			"path": "topic_goods_list",
+			"style": {
+				"navigationBarTitleText": "主题列表"
+			}
+		}]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "base-mall",

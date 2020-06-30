@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2020-06-28 11:08:53
  * @LastEditors: wkiwi
- * @LastEditTime: 2020-06-30 11:53:50
+ * @LastEditTime: 2020-06-30 18:59:51
  */
 
 const appConfig = {
