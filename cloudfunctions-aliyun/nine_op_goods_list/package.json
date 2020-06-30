@@ -1,0 +1,16 @@
+{
+  "name": "nine_op_goods_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app_config": "file:../common/app_config",
+    "make_sign": "file:../common/make_sign"
+  }
+}

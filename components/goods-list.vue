@@ -11,17 +11,27 @@
 						></lazy-image>
 					</view>
 				</view>
-				<view class="desc padding-10">
-					<view class="title text-clamp">{{ item.dtitle }}</view>
-					<view class="flex align-center justify-between">
+				<view class="desc padding-top-30 padding-bottom-30 padding-left-20 padding-right-20">
+					<view class="title text-clamp">
+						<view class="l-tag mini bg-red radius-10 margin-right-10">{{ item.shopType == 1 ? '天猫' : '淘宝' }}</view>
+						{{ item.dtitle }}
+					</view>
+					<view class="price text-red text-24">
+						<text>券后价</text>
+						<text class="text-36 padding-left-10">¥ {{ item.actualPrice }}</text>
+					</view>
+					<view class="flex align-center justify-between text-gray text-24">
 						<view class="goods-price">原价 {{ item.originalPrice }}</view>
 						<view class="goods-sales">已售 {{ item.monthSales }}</view>
 					</view>
-					<view class="row-coupon flex align-center justify-between">
-						<view class="quanhou">券后 {{ item.actualPrice }}元</view>
-						<view class="coupon-price flex align-center justify-end">
-							<view>{{ item.couponPrice }}</view>
-							<view>元券</view>
+					<view class="flex align-center justify-start padding-top-10">
+						<view class="l-capsule round mini margin-right-10">
+							<view class="l-tag line-orange mini ">券</view>
+							<view class="l-tag bg-orange mini">{{ item.couponPrice }}元</view>
+						</view>
+						<view class="l-tag mini line-yellow " v-if="item.freeshipRemoteDistrict == 1">包邮</view>
+						<view class="l-tag mini line-orange " v-if="item.activityType == 2 || item.activityType == 3">
+							{{ item.activityType == 2 ? '抢' : item.activityType == 3 ? '聚' : '' }}
 						</view>
 					</view>
 				</view>
@@ -47,11 +57,11 @@ export default {
 	},
 	methods: {
 		detail(data) {
-			let detail = JSON.stringify(data)
-			detail = encodeURIComponent(detail)
+			let detail = JSON.stringify(data);
+			detail = encodeURIComponent(detail);
 			uni.navigateTo({
-				url:`/pages/detail/detail?detail=${detail}`
-			})
+				url: `/pages/detail/detail?detail=${detail}`
+			});
 		}
 	}
 };
@@ -66,7 +76,7 @@ export default {
 	&:nth-of-type(even) {
 		padding-left: 10upx;
 	}
-	.item-wrpper{
+	.item-wrpper {
 		border-radius: 10upx;
 	}
 	.cover {
@@ -83,9 +93,15 @@ export default {
 		}
 	}
 }
-.desc{
-	.title{
-		 -webkit-line-clamp: 2;
+.desc {
+	.title {
+		line-height: 40upx;
+		-webkit-line-clamp: 2;
+		vertical-align: middle;
+		.l-tag{
+			vertical-align: top;
+			margin-top:4upx;
+		}
 	}
 }
 </style>

@@ -4,13 +4,29 @@
 			<swiper-item class="swiper-item" v-for="(item, index) of swiperImgs" :key="index"><image class="swiper-img" :src="item" mode="widthFix"></image></swiper-item>
 		</swiper>
 		<view class="goods-detail padding-20 bg-white">
-			<view class="title text-32">{{ detail.title }}</view>
-			<view class="price text-red text-24"><text>券后价</text> <text class="text-44 padding-left-10">¥ {{detail.actualPrice}}</text></view>
-			<view class="flex align-center justify-between padding-top-10">
-				<view class="price text-gray text-24"><text >原价</text> <text class="text-l padding-left-10 padding-right-10">{{detail.originalPrice}}</text></view>
-				<view class="price text-gray text-24"><text >已售</text> <text class="text-l padding-left-10 padding-right-10">{{detail.monthSales}}</text></view>
+			<view v-if="item.freeshipRemoteDistrict == 1">包邮</view>
+			<view v-if="item.activityType == 2 || item.activityType == 3">{{item.activityType==2?'抢':item.activityType==3?"聚":''}}</view>
+			
+			<view class="flex align-start justify-start">
+				<view class="l-tag mini bg-red">{{ detail.shopType == 1 ? '天猫' : '淘宝' }}</view>
+				<view class="title text-32">{{ detail.title }}</view>
 			</view>
-			<view class="desc text-gray text-24 padding-top-20">{{detail.desc}}</view>
+			
+			<view class="price text-red text-24">
+				<text>券后价</text>
+				<text class="text-44 padding-left-10">¥ {{ detail.actualPrice }}</text>
+			</view>
+			<view class="flex align-center justify-between padding-top-10">
+				<view class="price text-gray text-24">
+					<text>原价</text>
+					<text class="text-l padding-left-10 padding-right-10">{{ detail.originalPrice }}</text>
+				</view>
+				<view class="price text-gray text-24">
+					<text>已售</text>
+					<text class="text-l padding-left-10 padding-right-10">{{ detail.monthSales }}</text>
+				</view>
+			</view>
+			<view class="desc text-gray text-24 padding-top-20">{{ detail.desc }}</view>
 		</view>
 		<view class="flex align-start justify-start text-28 padding-20 bg-white margin-bottom-20" @click="showProperties">
 			<view class="parameter  text-gray margin-right-30">参数</view>

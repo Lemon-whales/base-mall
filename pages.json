@@ -15,6 +15,22 @@
 			"style": {
 				"navigationBarTitleText": "测试"
 			}
+		},
+		{
+			"path": "pages/classify/classify",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
+		}, {
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "pages/nine/nine",
+			"style": {
+				"navigationBarTitleText": "9块9包邮"
+			}
 		}
 	],
 	"globalStyle": {
@@ -22,5 +38,32 @@
 		"navigationBarTitleText": "base-mall",
 		"navigationBarBackgroundColor": "#F2F2F2",
 		"backgroundColor": "#F2F2F2"
+	},
+	"tabBar": {
+		"color": "#444444",
+		"selectedColor": "#fca853",
+		"borderStyle": "white",
+		"backgroundColor": "#F2F2F2",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/tab/index-0.png",
+			"selectedIconPath": "static/tab/index-1.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/nine/nine",
+			"iconPath": "static/tab/kiai9-0.png",
+			"selectedIconPath": "static/tab/kiai9-1.png",
+			"text": "9块9"
+		}, {
+			"pagePath": "pages/classify/classify",
+			"iconPath": "static/tab/classify-0.png",
+			"selectedIconPath": "static/tab/classify-1.png",
+			"text": "分类"
+		}, {
+			"pagePath": "pages/mine/mine",
+			"iconPath": "static/tab/user-0.png",
+			"selectedIconPath": "static/tab/user-1.png",
+			"text": "我的"
+		}]
 	}
 }
