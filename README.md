@@ -117,11 +117,11 @@ ic_tab_mine.png
 ### 效果预览
 
 微信小程序体验版预览
-![Image text](https://github.com/Lemon-whales/base-mall/blob/master/preview/experience.jpg?raw=true)
+![Image text](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/6830f740-bb87-11ea-b43d-2358b31b6ce6.jpg)
 
 页面预览
 
-| 页面   | 图片                                                                                              | 页面     | 图片                                                                                                         |
-| ------ | ------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| 首页   | ![首页](https://github.com/Lemon-whales/base-mall/blob/master/preview/index.jpeg?raw=true "首页") | 搜索     | ![搜索](https://github.com/Lemon-whales/base-mall/blob/master/preview/search.jpeg?raw=true "搜索")           |
-| 9 块 9 | ![9块9](https://github.com/Lemon-whales/base-mall/blob/master/preview/nine.jpeg?raw=true "9块9")  | 超级分类 | ![超级分类](https://github.com/Lemon-whales/base-mall/blob/master/preview/classify.jpeg?raw=true "超级分类") |
+| 页面   | 图片                                                                                                         | 页面     | 图片                                                                                                                 |
+| ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| 首页   | ![首页](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/707dc090-bb87-11ea-a30b-e311646dfaf2.jpeg "首页") | 搜索     | ![搜索](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/708847e0-bb87-11ea-8bd0-2998ac5bbf7e.jpeg "搜索")         |
+| 9 块 9 | ![9块9](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/7095b560-bb87-11ea-a30b-e311646dfaf2.jpeg "9块9") | 超级分类 | ![超级分类](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/7091bdc0-bb87-11ea-a30b-e311646dfaf2.jpeg "超级分类") |
