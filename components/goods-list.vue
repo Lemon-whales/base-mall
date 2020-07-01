@@ -4,11 +4,16 @@
 			<view class="item-wrpper bg-white margin-bottom-20 overflow-hidden">
 				<view class="cover">
 					<view class="img-wrapper">
+						<!-- #ifdef MP -->
 						<lazy-image
 							:src="item.mainPic ? item.mainPic : 'https://img-blog.csdnimg.cn/20200615195704660.png'"
 							:showMenuByLongpress="false"
 							placeholder="https://img-blog.csdnimg.cn/20200615195704660.png"
 						></lazy-image>
+						<!-- #endif -->
+						<!-- #ifndef MP -->
+						<image class="img" :src="item.mainPic ? item.mainPic : 'https://img-blog.csdnimg.cn/20200615195704660.png'" mode="widthFix"></image>
+						<!-- #endif -->
 					</view>
 				</view>
 				<view class="desc padding-top-30 padding-bottom-30 padding-left-20 padding-right-20">
@@ -90,6 +95,10 @@ export default {
 			left: 0;
 			width: 100%;
 			height: 100%;
+			.img{
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 }

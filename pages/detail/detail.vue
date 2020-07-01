@@ -4,8 +4,6 @@
 			<swiper-item class="swiper-item" v-for="(item, index) of swiperImgs" :key="index"><image class="swiper-img" :src="item" mode="widthFix"></image></swiper-item>
 		</swiper>
 		<view class="goods-detail padding-20 bg-white">
-			<view v-if="item.freeshipRemoteDistrict == 1">包邮</view>
-			<view v-if="item.activityType == 2 || item.activityType == 3">{{item.activityType==2?'抢':item.activityType==3?"聚":''}}</view>
 			
 			<view class="flex align-start justify-start">
 				<view class="l-tag mini bg-red">{{ detail.shopType == 1 ? '天猫' : '淘宝' }}</view>
@@ -26,6 +24,10 @@
 					<text class="text-l padding-left-10 padding-right-10">{{ detail.monthSales }}</text>
 				</view>
 			</view>
+			<view class="l-tag mini line-yellow " v-if="detail.freeshipRemoteDistrict == 1">包邮</view>
+			<view class="l-tag mini line-orange " v-if="detail.activityType == 2 || detail.activityType == 3">
+				{{ detail.activityType == 2 ? '抢' : detail.activityType == 3 ? '聚' : '' }}
+			</view>
 			<view class="desc text-gray text-24 padding-top-20">{{ detail.desc }}</view>
 		</view>
 		<view class="flex align-start justify-start text-28 padding-20 bg-white margin-bottom-20" @click="showProperties">
@@ -35,15 +37,20 @@
 
 		<view class="imgs-detail">
 			<view class="img" v-for="(item, index) of detail.detailPicsArr" :key="index">
+				<!-- #ifdef MP -->
 				<lazy-image
 					:src="item ? item : 'https://img-blog.csdnimg.cn/20200615195704660.png'"
 					:showMenuByLongpress="false"
 					mode="widthFix"
 					placeholder="https://img-blog.csdnimg.cn/20200615195704660.png"
 				></lazy-image>
+				<!-- #endif -->
+				<!-- #ifndef MP -->
+				<image class="img" :src="item.mainPic ? item.mainPic : 'https://img-blog.csdnimg.cn/20200615195704660.png'" mode="widthFix"></image>
+				<!-- #endif -->
 			</view>
 		</view>
-		<parameter v-if="propertiesWindow" :itemProperties="itemProperties" @hideProperties="hideProperties"></parameter>
+		<parameter v-if="propertiesWindow&&itemProperties.length>0" :itemProperties="itemProperties" @hideProperties="hideProperties"></parameter>
 		<view class="footer l-bar bg-white tabbar border shop">
 			<button class="action" open-type="contact">
 				<view class="cuIcon-service text-green"><view class="l-tag badge"></view></view>
@@ -72,7 +79,7 @@ export default {
 			goodsId: '', //商品ID
 			swiperImgs: [], //轮播图
 			seller: '', //卖家信息
-			itemProperties: '', //商品参数
+			itemProperties: [], //商品参数
 			propsCut: '', //参数缩略值
 			rate: '', //评价加评价关键词
 			propertiesWindow: false //是否显示参数弹窗
@@ -175,7 +182,12 @@ export default {
 				})
 				.then(res => {
 					uni.hideLoading();
+					// #ifdef MP
 					_this.$base.methods.setClipboardData(res.result.data.data.tpwd);
+					// #endif
+					// #ifdef H5
+					 location.href=res.result.data.data.couponClickUrl
+					// #endif
 				});
 		}
 	}
@@ -200,6 +212,7 @@ export default {
 
 	.img {
 		min-height: 50upx;
+		width :100%;
 	}
 }
 .footer {

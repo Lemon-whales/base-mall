@@ -11,11 +11,11 @@ import Vue from "vue";
 export default {
   onLaunch: function() {
     let _this = this;
+		//#ifdef MP
     _this.$store
       .dispatch("auth/login")
       .then(res => {})
       .catch(err => {}); //调用vueX登陆
-		//#ifdef MP
     const updateManager = uni.getUpdateManager(); //开始检查小程序让用户小程序版本保持最新
     updateManager.onCheckForUpdate(function(res) {
       if (res.hasUpdate) {

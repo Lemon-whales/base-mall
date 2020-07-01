@@ -75,5 +75,9 @@
     },
     "mp-qq" : {
         "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "base-mall",
+        "domain" : "http://base-mall.bemcss.com/"
     }
 }
