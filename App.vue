@@ -15,7 +15,7 @@ export default {
       .dispatch("auth/login")
       .then(res => {})
       .catch(err => {}); //调用vueX登陆
-    // # ifdef  MP
+		//#ifdef MP
     const updateManager = uni.getUpdateManager(); //开始检查小程序让用户小程序版本保持最新
     updateManager.onCheckForUpdate(function(res) {
       if (res.hasUpdate) {
@@ -41,6 +41,7 @@ export default {
         });
       }
     });
+		// #endif
     /**
      * 初次加载判断网络情况
      * 无网络状态下根据实际情况进行调整

@@ -1,12 +1,5 @@
-<!--
- * @Author: wkiwi
- * @Email: w_kiwi@163.com
- * @Date: 2020-06-30 18:42:52
- * @LastEditors: wkiwi
- * @LastEditTime: 2020-07-01 15:19:37
---> 
 <template>
-  <view>
+  <view class="page">
     <view class="padding-20">
       <goods-list :goodslist="goodslist"></goods-list>
     </view>
@@ -24,23 +17,30 @@ export default {
   mixins: [loadMore],
   data() {
     return {
+      goodslist: [], //商品列表
       pageId: 1, //下一页标志
-      topicData: "", //主题信息
-      goodslist: [] //商品列表
+      keyWord: "", //当前要搜索的关键词
+      sortType: "total_sales_des" //排序类型
     };
   },
   components: {
     goodsList
   },
   onLoad(options) {
-    if (options.data) {
-      let data = decodeURIComponent(options.data);
-      data = JSON.parse(data);
-      this.topicData = data;
+    if (options.keyWord) {
+      let keyWord = decodeURIComponent(options.keyWord);
+      this.keyWord = keyWord;
       uni.setNavigationBarTitle({
-        title: data.topicName
+        title: keyWord
+      });
+      uni.showLoading({
+        title: "加载中"
       });
       this.goodsList();
+    } else {
+      uni.navigateBack({
+        delta: 1
+      });
     }
   },
   methods: {
@@ -58,15 +58,18 @@ export default {
       _this.listLoading = true;
       uniCloud
         .callFunction({
-          name: "topic_goods_list",
+          name: "list_super_goods",
           data: {
             pageId: _this.pageId,
-            pageSize: 20, //每页条数：默认为20，最大值100
-            topicId: _this.topicData.topicId //专辑id，通过精选专辑API获取的活动id
+            keyWords: _this.keyWord,
+            pageSize: 50,
+            type: 0, //搜索类型：0-综合结果，1-大淘客商品，2-联盟商品
+            sort: _this.sortType || "total_sales_des"
           }
         })
         .then(res => {
           _this.listLoading = false;
+          uni.hideLoading();
           uni.stopPullDownRefresh();
           if (_this.listPage == 1) {
             _this.goodslist = res.result.data.data.list;
@@ -82,10 +85,10 @@ export default {
           } else {
             _this.listPage = 0;
           }
-          console.log(res.result.data.data);
         })
         .catch(err => {
           _this.listLoading = false;
+          uni.hideLoading();
           uni.stopPullDownRefresh();
         });
     }

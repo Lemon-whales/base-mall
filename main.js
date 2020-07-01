@@ -6,8 +6,7 @@
  * @LastEditTime: 2020-06-24 11:50:21
  */
 
-// import  '@/common/utils/rewriteFunction.js'//重写函数'
-import "@/common/ald/ald-stat"; //阿拉丁
+// import "@/common/ald/ald-stat"; //阿拉丁
 import Vue from "vue";
 import App from "./App";
 import store from "./store";

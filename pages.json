@@ -33,7 +33,11 @@
 			}
 		}
 
-	],
+	    ,{
+            "path" : "pages/goods_list/goods_list",
+            "style" : {}
+        }
+    ],
 	"subPackages": [{
 		"root": "pages/subPackages/index",
 		"pages": [{
@@ -42,6 +46,19 @@
 				"navigationBarTitleText": "主题列表"
 			}
 		}]
+	},
+	{
+		"root": "pages/subPackages/search",
+		"pages": [{
+			"path": "index",
+			"style": {
+				"navigationBarTitleText": "超级搜索"
+			}
+		}    ,{
+                    "path" : "search_list",
+                    "style" : {}
+                }
+            ]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

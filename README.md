@@ -113,3 +113,6 @@ ic_menu_back.png
 ic_menu_settings.png
 ic_tab_home.png
 ic_tab_mine.png
+
+
+### 效果预览

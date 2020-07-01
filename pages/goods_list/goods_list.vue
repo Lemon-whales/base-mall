@@ -1,12 +1,12 @@
 <!--
  * @Author: wkiwi
  * @Email: w_kiwi@163.com
- * @Date: 2020-06-30 18:42:52
+ * @Date: 2020-07-01 14:05:33
  * @LastEditors: wkiwi
- * @LastEditTime: 2020-07-01 15:19:37
+ * @LastEditTime: 2020-07-01 15:19:22
 --> 
 <template>
-  <view>
+  <view class="pading-20">
     <view class="padding-20">
       <goods-list :goodslist="goodslist"></goods-list>
     </view>
@@ -24,24 +24,26 @@ export default {
   mixins: [loadMore],
   data() {
     return {
+      goodslist: [], //商品列表
       pageId: 1, //下一页标志
-      topicData: "", //主题信息
-      goodslist: [] //商品列表
+      subcid: "" //大淘客的二级类目id
     };
   },
   components: {
     goodsList
   },
   onLoad(options) {
-    if (options.data) {
-      let data = decodeURIComponent(options.data);
-      data = JSON.parse(data);
-      this.topicData = data;
-      uni.setNavigationBarTitle({
-        title: data.topicName
-      });
-      this.goodsList();
+    if (options.subcid) {
+      //耳机分类id
+      this.subcid = options.subcid;
     }
+    if (options.name) {
+      let name = decodeURIComponent(options.name);
+      uni.setNavigationBarTitle({
+        title: name
+      });
+    }
+    this.goodsList();
   },
   methods: {
     refreshList() {
@@ -58,11 +60,12 @@ export default {
       _this.listLoading = true;
       uniCloud
         .callFunction({
-          name: "topic_goods_list",
+          name: "goods_list",
           data: {
             pageId: _this.pageId,
-            pageSize: 20, //每页条数：默认为20，最大值100
-            topicId: _this.topicData.topicId //专辑id，通过精选专辑API获取的活动id
+            pageSize: 50, //每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200
+            sort: 0, //排序方式，默认为0，0-综合排序，1-商品上架时间从高到低，2-销量从高到低，3-领券量从高到低，4-佣金比例从高到低，5-价格（券后价）从高到低，6-价格（券后价）从低到高
+            subcid: _this.subcid //大淘客的二级类目id，通过超级分类API获取。仅允许传一个二级id，当一级类目id和二级类目id同时传入时，会自动忽略二级类目id
           }
         })
         .then(res => {
@@ -82,7 +85,6 @@ export default {
           } else {
             _this.listPage = 0;
           }
-          console.log(res.result.data.data);
         })
         .catch(err => {
           _this.listLoading = false;
