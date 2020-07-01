@@ -114,5 +114,14 @@ ic_menu_settings.png
 ic_tab_home.png
 ic_tab_mine.png
 
-
 ### 效果预览
+
+微信小程序体验版预览
+![Image text](https://github.com/Lemon-whales/base-mall/blob/master/preview/experience.jpg?raw=true)
+
+页面预览
+
+| 页面   | 图片                                                                                              | 页面     | 图片                                                                                                         |
+| ------ | ------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
+| 首页   | ![首页](https://github.com/Lemon-whales/base-mall/blob/master/preview/index.jpeg?raw=true "首页") | 搜索     | ![搜索](https://github.com/Lemon-whales/base-mall/blob/master/preview/search.jpeg?raw=true "搜索")           |
+| 9 块 9 | ![9块9](https://github.com/Lemon-whales/base-mall/blob/master/preview/nine.jpeg?raw=true "9块9")  | 超级分类 | ![超级分类](https://github.com/Lemon-whales/base-mall/blob/master/preview/classify.jpeg?raw=true "超级分类") |
