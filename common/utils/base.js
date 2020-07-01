@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2019-10-17 12:20:37
  * @LastEditors: wkiwi
- * @LastEditTime: 2020-06-14 16:19:44
+ * @LastEditTime: 2020-07-01 15:42:16
  */
 class Base {
   constructor() {
@@ -448,18 +448,18 @@ class Base {
           if (title) {
             newTitle = username + title;
           } else {
-            newTitle = username + "来【商图助理】与校友一起交流学习吧！";
+            newTitle = username + "来【uni-app】开发一个自己的项目吧！";
           }
         } else {
           if (title) {
             newTitle = title;
           } else {
-            newTitle = "来【商图助理】与校友一起交流学习吧！";
+            newTitle = "来【uni-app】开发一个自己的项目吧！";
           }
         }
         let imgArr = [
-          "https://img-blog.csdnimg.cn/20191012134534112.jpg",
-          "https://img-blog.csdnimg.cn/20191012134534112.jpg",
+          "https://img.cdn.aliyun.dcloud.net.cn/dev/img/ext/plugin-match.png",
+          "https://img.cdn.aliyun.dcloud.net.cn/dev/img/ext/plugin-match.png",
         ];
         let num = Math.floor(Math.random() * 2);
         var raw = {
