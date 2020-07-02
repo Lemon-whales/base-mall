@@ -8,7 +8,7 @@
 <template>
   <view>
     <view class="padding-20">
-      <goods-list :goodslist="goodslist"></goods-list>
+      <goods-list :goodslist="goodslist" :scrollTop="scrollTop"></goods-list>
     </view>
     <load-more
       v-if="goodslist.length > 0"
@@ -20,13 +20,15 @@
 <script>
 import goodsList from "@/components/goods-list.vue";
 import loadMore from "@/mixins/loadMore.js";
+let pageScrollTimeoutId;
 export default {
   mixins: [loadMore],
   data() {
     return {
       pageId: 1, //下一页标志
       topicData: "", //主题信息
-      goodslist: [] //商品列表
+      goodslist: [] ,//商品列表
+			scrollTop:0,//滚动距离顶部距离
     };
   },
   components: {
@@ -89,7 +91,17 @@ export default {
           uni.stopPullDownRefresh();
         });
     }
-  }
+  },
+	onPageScroll: function(res) { //页面滚动监听
+		let _this = this;
+		if (!pageScrollTimeoutId) {
+			clearTimeout(pageScrollTimeoutId);
+		}
+		pageScrollTimeoutId = setTimeout(()=> { //防抖
+			_this.scrollTop = res.scrollTop
+			pageScrollTimeoutId = ''
+		}, 50);
+	},
 };
 </script>
 

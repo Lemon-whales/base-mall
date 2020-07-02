@@ -1,7 +1,7 @@
 <template>
   <view class="page">
     <view class="padding-20">
-      <goods-list :goodslist="goodslist"></goods-list>
+      <goods-list :goodslist="goodslist" :scrollTop="scrollTop"></goods-list>
     </view>
     <load-more
       v-if="goodslist.length > 0"
@@ -13,6 +13,7 @@
 <script>
 import goodsList from "@/components/goods-list.vue";
 import loadMore from "@/mixins/loadMore.js";
+let pageScrollTimeoutId;
 export default {
   mixins: [loadMore],
   data() {
@@ -20,7 +21,8 @@ export default {
       goodslist: [], //商品列表
       pageId: 1, //下一页标志
       keyWord: "", //当前要搜索的关键词
-      sortType: "total_sales_des" //排序类型
+      sortType: "total_sales_des" ,//排序类型
+			scrollTop:0,//滚动距离顶部距离
     };
   },
   components: {
@@ -92,7 +94,17 @@ export default {
           uni.stopPullDownRefresh();
         });
     }
-  }
+  },
+	onPageScroll: function(res) { //页面滚动监听
+		let _this = this;
+		if (!pageScrollTimeoutId) {
+			clearTimeout(pageScrollTimeoutId);
+		}
+		pageScrollTimeoutId = setTimeout(()=> { //防抖
+			_this.scrollTop = res.scrollTop
+			pageScrollTimeoutId = ''
+		}, 50);
+	},
 };
 </script>
 

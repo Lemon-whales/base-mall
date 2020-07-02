@@ -33,7 +33,7 @@ export default {
     placeholder: {
       //占位图图片链接
       type: String,
-      default: "https://img-blog.csdnimg.cn/20200116204315833.png"
+      default: "https://img-blog.csdnimg.cn/20200615195704660.png"
     },
     mode: {
       //图片显示模型

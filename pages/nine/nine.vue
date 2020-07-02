@@ -4,7 +4,7 @@
       <scroll-tabs :tabData="tabs" :defaultIndex="defaultIndex" @tabClick="tabClick"></scroll-tabs>
     </view>
     <view class="padding-20">
-      <goods-list :goodslist="goodslist"></goods-list>
+      <goods-list :goodslist="goodslist" :scrollTop="scrollTop"></goods-list>
     </view>
     <load-more
       v-if="goodslist.length > 0"
@@ -17,6 +17,7 @@
 import scrollTabs from "@/components/scroll-tabs.vue";
 import goodsList from "@/components/goods-list.vue";
 import loadMore from "@/mixins/loadMore.js";
+let pageScrollTimeoutId;
 export default {
   mixins: [loadMore],
   data() {
@@ -37,7 +38,8 @@ export default {
         "文娱车品"
       ],
       defaultIndex: 0,
-      nineCid: -1 //9块9分类
+      nineCid: -1 ,//9块9分类
+			scrollTop:0,//滚动距离顶部距离
     };
   },
   components: {
@@ -114,7 +116,17 @@ export default {
           uni.hideLoading();
           uni.stopPullDownRefresh();
         });
-    }
+    },
+		onPageScroll: function(res) { //页面滚动监听
+			let _this = this;
+			if (!pageScrollTimeoutId) {
+				clearTimeout(pageScrollTimeoutId);
+			}
+			pageScrollTimeoutId = setTimeout(()=> { //防抖
+				_this.scrollTop = res.scrollTop
+				pageScrollTimeoutId = ''
+			}, 50);
+		},
   }
 };
 </script>

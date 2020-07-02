@@ -12,7 +12,10 @@
 						></lazy-image>
 						<!-- #endif -->
 						<!-- #ifndef MP -->
-						<image class="img" :src="item.mainPic ? item.mainPic : 'https://img-blog.csdnimg.cn/20200615195704660.png'" mode="widthFix"></image>
+						<!-- 针对不支持createIntersectionObserver做兼容性更强的图片懒加载 -->
+						<lazy-img :showMenuByLonssgpress="false" :scrollTop="scrollTop" :index="index" :src="item.mainPic"
+						 :windowHeight="windowHeight" :distance="windowHeight" mode="widthFix" :destroy="true"></lazy-img>
+						<!-- <image class="img" :src="item.mainPic ? item.mainPic : 'https://img-blog.csdnimg.cn/20200615195704660.png'" mode="widthFix"></image> -->
 						<!-- #endif -->
 					</view>
 				</view>
@@ -46,19 +49,30 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+import lazyImg from './lazy-img.vue'
 import lazyImage from './lazy-image.vue';
 export default {
 	name: 'goods-list',
 	props: {
 		goodslist: {
 			type: Array
+		},
+		scrollTop:{ // lazyImg组件使用
+			type: Number
 		}
 	},
 	data() {
 		return {};
 	},
 	components: {
-		lazyImage
+		lazyImage,
+		lazyImg
+	},
+	computed: {
+		...mapState("app", {
+			windowHeight: (state) => state.windowHeight,
+		}),
 	},
 	methods: {
 		detail(data) {
