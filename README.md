@@ -125,3 +125,7 @@ ic_tab_mine.png
 | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
 | 首页   | ![首页](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/707dc090-bb87-11ea-a30b-e311646dfaf2.jpeg "首页") | 搜索     | ![搜索](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/708847e0-bb87-11ea-8bd0-2998ac5bbf7e.jpeg "搜索")         |
 | 9 块 9 | ![9块9](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/7095b560-bb87-11ea-a30b-e311646dfaf2.jpeg "9块9") | 超级分类 | ![超级分类](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/7091bdc0-bb87-11ea-a30b-e311646dfaf2.jpeg "超级分类") |
+
+# 使用教程
+
+1.使用 HBuilderX 倒入事例项目 2.上传 cloudfunctions-aliyun 下 common 下的公共模块，再选择上传所有云函数 3.manifest 点击获取应用标识。运行到微信小程序，商品详情页调用淘宝接口 H5 存在被禁用问题
