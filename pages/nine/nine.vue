@@ -126,7 +126,12 @@ export default {
   .scroll-tabs {
     position: fixed;
     z-index: 9;
+		// #ifdef MP
     top: 0;
+		// #endif
+		// #ifdef H5
+		top: calc(44px + env(safe-area-inset-top));
+		// #endif
     left: 0;
     width: 100%;
   }

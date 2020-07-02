@@ -145,6 +145,9 @@ export default {
 				data: {
 					data: { itemNumId: this.goodsId }
 				},
+				header: {
+					'content-type': 'application/json;charset=UTF-8' // 默认值
+				},
 				method: 'GET',
 				success: ret => {
 					let data = ret.data;
