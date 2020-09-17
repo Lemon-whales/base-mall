@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2019-10-15 14:10:38
  * @LastEditors: wkiwi
- * @LastEditTime: 2020-06-14 17:35:51
+ * @LastEditTime: 2020-09-17 12:27:04
  */
 import HttpClient from "../common/http-client";
 import AuthService from "./auth.service";
@@ -12,13 +12,15 @@ import Md5 from "../common/utils/md5.js";
 import AppConfig from "../config/app.config.js";
 import ApiConfig from "../config/api.config.js";
 import store from "../store/index.js";
+
 class ApiClient {
   /**
    * Create a new instance of ApiClient.
    */
   constructor() {
+    
     this.http = new HttpClient();
-
+    
     this.http.interceptors.request.push((options) => {
       let nextOptions = options;
       // console.log('拦截HTTP请求处理结果: ', nextOptions);
@@ -36,75 +38,29 @@ class ApiClient {
       // console.log('拦截HTTP响应处理结果: ', response);
       response
         .then((res) => {
-          if (res.data.code == 0) {
-            uni.showToast({
-              title: res.data.message,
-              icon: "none",
-            });
-          }
           return res;
         })
-        .catch((error) => {
+        .catch((error)  => {
           let err = error;
           if (err) {
             switch (err.statusCode) {
+              case 200:
+                err.message = err.data.message;
+                break;
               case 400:
                 err.message = "请求错误(400)";
                 break;
               case 401:
-                // 401: 未登录
+                // 401: 未登录或Token过期 对用户进行提示
                 // 未登录则跳转登录页面，并携带当前页面的路径
                 // 在登录成功后返回当前页面，这一步需要在登录页操作。
-                // eslint-disable-next-line no-undef
                 // uni.navigateTo({
                 //   url: 'login'
                 // });
-
                 err.message = "未授权，请重新登录(401)";
-                store.dispatch("auth/logout");
-                store
-                  .dispatch("auth/login")
-                  .then((res) => {
-                    uni.showToast({
-                      title: "请重新操作",
-                      duration: 2000,
-                      icon: "none",
-                    });
-                  })
-                  .catch((err) => {
-                    uni.showToast({
-                      title: "账户状态异常",
-                      duration: 2000,
-                      icon: "none",
-                    });
-                    console.log(err);
-                  });
                 break;
               case 403:
-                // 403 Token过期
-                // 登录过期对用户进行提示
-                // 清除本地token和清空vuex中token对象
-                // 跳转登录页面
-                // AuthService.logout();
                 err.message = "拒绝访问(403)";
-                store.dispatch("auth/logout");
-                store
-                  .dispatch("auth/login")
-                  .then((res) => {
-                    uni.showToast({
-                      title: "请重新操作",
-                      duration: 2000,
-                      icon: "none",
-                    });
-                  })
-                  .catch((err) => {
-                    uni.showToast({
-                      title: "账户状态异常",
-                      duration: 2000,
-                      icon: "none",
-                    });
-                    console.log(err);
-                  });
                 break;
               case 404:
                 err.message = "请求错误(404)";
@@ -128,20 +84,16 @@ class ApiClient {
                 err.message = "HTTP版本不受支持(505)";
                 break;
               default:
-                err.message = `错误类型[${
-                  err.statusCode ? err.statusCode : "未知"
-                }]`;
+                err.message = `错误类型[${err.statusCode ? err.statusCode : "未知"}]`;
             }
           } else {
             err.message = "连接到服务器失败";
           }
-          if (err.statusCode != 401 || err.statusCode != 403) {
-            uni.showToast({
-              title: err.message,
-              duration: 2000,
-              icon: "none",
-            });
-          }
+          uni.showToast({
+            title: err.message,
+            duration: 2000,
+            icon: "none",
+          });
           return err;
         });
       return response;
@@ -149,6 +101,16 @@ class ApiClient {
   }
 
   request(options) {
+    if(!store.getters['app/getIsConnected']){
+      uni.showToast({
+        title: '请检查网络',
+        duration: 2000,
+        icon: "none",
+      });
+      return new Promise((resolve, reject) => {
+        reject('请检查网络')
+      })
+    }
     let nonce = new Base().tools.GenNonDuplicateID(4);
     let timestamp = Date.parse(new Date()) / 1000; // 取时间戳
     let privateKey = AppConfig.PRIVATE_KEY;
@@ -276,7 +238,7 @@ class ApiClient {
       uni.request({
         url: ApiConfig.APP_BASE_API.IMG_UPLOAD,
         data: {
-          service: service, //业务范围 2抽奖封面 3抽奖详细内容 4奖品封面 5快捷扫码二维码 6发起人信息二维码 7抽奖晒单图片 8抽奖评论图片 9小程序码 10举报抽奖截图
+          service: service, //业务范围 1文章图片
           extend: tempFilePath.slice(tempFilePath.lastIndexOf(".") + 1), //extend图片后缀 仅限png,jpeg,jpg
         },
         method: "POST",
@@ -416,3 +378,4 @@ const getApiClient = () => {
 
 export { getApiClient };
 export default new ApiClient();
+

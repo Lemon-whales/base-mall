@@ -1,6 +1,10 @@
 ## 介绍
 
-    base-mall
+这不是一个面向于淘客的APP，只是基于淘客数据，真实的数据更加切合项目实战！
+		
+一个基础性商城，promise封装请求，mockServer本地，VueX模块管理数据，BUS传值，mixin混入，各种实用组件，图片懒加载，mixin混入列表加载分页，滑动scroll-tabs,左右联动分类数据接入
+		
+整体使用uniCloud来完成，后续拓展后台用户管理，购物车云端数据存储，持续更新中....
 
 # bus 传值
 
@@ -115,9 +119,8 @@ ic_tab_home.png
 ic_tab_mine.png
 
 ### 效果预览
-
-微信小程序体验版预览
-![Image text](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/6830f740-bb87-11ea-b43d-2358b31b6ce6.jpg)
+H5预览
+![Image text](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/b5b55c90-bcd1-11ea-8ff1-d5dcf8779628.png)
 
 页面预览
 

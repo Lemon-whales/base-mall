@@ -6,11 +6,13 @@
  * @LastEditTime: 2020-07-01 15:19:29
 --> 
 <template>
-  <view>
+  <view> 
     <button @click="test">进入测试页面</button>
     <view class="text-24 text-gray text-center padding-top-20">进入测试页面请先运行</view>
     <view class="text-24 text-gray text-center padding-top-20">npm start</view>
     <view class="text-24 text-gray text-center padding-top-20">启动模拟数据服务</view>
+		
+		<button @click="uniId">进入uni-id用户管理</button>
   </view>
 </template>
 
@@ -24,7 +26,12 @@ export default {
       uni.navigateTo({
         url: "/pages/test/test"
       });
-    }
+    },
+		uniId(){
+			uni.navigateTo({
+			  url: "/pages/user_center/user_center"
+			});
+		}
   }
 };
 </script>
