@@ -134,7 +134,7 @@ H5预览
 | 页面   | 图片                                                                                                         | 页面     | 图片                                                                                                                 |
 | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
 | 首页   | ![首页](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/index.jpeg?raw=true "首页") | 搜索     | ![搜索](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/search.jpeg?raw=true "搜索")         |
-| 详情页 | ![详情页](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/detail.png?raw=true "详情页") |  |  |
+| 详情页 | ![详情页](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/detail.png?raw=true "详情页") | 活动页 | ![活动页](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/activity.jpeg?raw=true "活动页") |
 
 
 # 使用教程
