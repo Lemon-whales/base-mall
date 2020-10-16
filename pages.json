@@ -43,12 +43,11 @@
 			"style": {
 				"navigationBarTitleText": "购物车"
 			}
+		}, {
+			"path": "pages/user_center/user_center",
+			"style": {}
 		}
-	    ,{
-            "path" : "pages/user_center/user_center",
-            "style" : {}
-        }
-    ],
+	],
 	"subPackages": [{
 			"root": "pages/subPackages/index",
 			"pages": [{
@@ -69,6 +68,48 @@
 				"path": "search_list",
 				"style": {}
 			}]
+		},
+		{
+			"root": "pages/subPackages/jd",
+			"pages": [{
+					"path": "index",
+					"style": {
+						"navigationBarTitleText": "京东商城",
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "detail",
+					"style": {
+						"navigationBarTitleText": "商品详情",
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "black"
+					}
+				},
+				{
+					"path": "search",
+					"style": {
+						"navigationBarTitleText": "超级搜索",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "search_goods",
+					"style": {
+						"navigationBarTitleText": "超级搜索列表",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "activity_list",
+					"style": {
+						"navigationBarTitleText": "活动商品列表",
+						"navigationBarTextStyle": "white"
+					}
+				}
+			]
 		}
 	],
 	"globalStyle": {

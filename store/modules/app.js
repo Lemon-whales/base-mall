@@ -14,6 +14,7 @@ const TYPES = {
   SET_IPHONE11: "SET_IPHONE11", //设置是否苹果11或ihoneX,含有虚拟home 键
   SET_NETWORK: "SET_NETWORK", //设置网络状态
   SET_PHONE_INFO: "SET_PHONE_INFO", //设置手机信息
+  SET_ADD_LOTTERY_OPEN: "SET_ADD_LOTTERY_OPEN", //设置添加抽奖页面是否打开过
 };
 
 // initial state
@@ -32,6 +33,9 @@ const state = {
 const getters = {
   getTheme(state) {
     return state.theme;
+  },
+  getIsConnected(state) {
+    return state.isConnected;
   },
 };
 

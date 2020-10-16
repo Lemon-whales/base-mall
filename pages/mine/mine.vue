@@ -7,6 +7,7 @@
 --> 
 <template>
   <view> 
+		<button @click="jd">进入京东优惠券模块</button>
     <button @click="test">进入测试页面</button>
     <view class="text-24 text-gray text-center padding-top-20">进入测试页面请先运行</view>
     <view class="text-24 text-gray text-center padding-top-20">npm start</view>
@@ -30,6 +31,11 @@ export default {
 		uniId(){
 			uni.navigateTo({
 			  url: "/pages/user_center/user_center"
+			});
+		},
+		jd(){
+			uni.navigateTo({
+			  url: "/pages/subPackages/jd/index"
 			});
 		}
   }

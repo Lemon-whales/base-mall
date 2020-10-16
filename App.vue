@@ -90,6 +90,36 @@ export default {
           windowHeight: e.windowHeight, //屏幕高度
           screenHeight: e.screenHeight //屏幕总高度
         });
+				Vue.prototype.windowWidth = e.windowWidth;
+				if (e.model.search("iPhone X") != -1) {
+					_this.$store.commit("app/SET_IPHONE11", true);
+				} else {
+					_this.$store.commit("app/SET_IPHONE11", false);
+				}
+				// #ifndef MP
+				Vue.prototype.StatusBar = e.statusBarHeight;
+				if (e.platform == "android") {
+					Vue.prototype.CustomBar = e.statusBarHeight + 50;
+				} else {
+					Vue.prototype.CustomBar = e.statusBarHeight + 45;
+				}
+				// #endif
+
+				// #ifdef MP-WEIXIN || MP-QQ
+					Vue.prototype.StatusBar = e.statusBarHeight;
+					let capsule = wx.getMenuButtonBoundingClientRect();
+					if (capsule) {
+						Vue.prototype.Custom = capsule;
+						Vue.prototype.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
+					} else {
+						Vue.prototype.CustomBar = e.statusBarHeight + 50;
+					}
+					// #endif		
+	
+					// #ifdef MP-ALIPAY
+					Vue.prototype.StatusBar = e.statusBarHeight;
+					Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
+					// #endif
       }
     });
   },
