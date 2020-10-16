@@ -122,12 +122,20 @@ ic_tab_mine.png
 H5预览
 ![Image text](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/b5b55c90-bcd1-11ea-8ff1-d5dcf8779628.png)
 
-页面预览
+淘宝页面预览
 
 | 页面   | 图片                                                                                                         | 页面     | 图片                                                                                                                 |
 | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
 | 首页   | ![首页](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/707dc090-bb87-11ea-a30b-e311646dfaf2.jpeg "首页") | 搜索     | ![搜索](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/708847e0-bb87-11ea-8bd0-2998ac5bbf7e.jpeg "搜索")         |
 | 9 块 9 | ![9块9](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/7095b560-bb87-11ea-a30b-e311646dfaf2.jpeg "9块9") | 超级分类 | ![超级分类](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-base-mall/7091bdc0-bb87-11ea-a30b-e311646dfaf2.jpeg "超级分类") |
+
+京东页面预览
+
+| 页面   | 图片                                                                                                         | 页面     | 图片                                                                                                                 |
+| ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| 首页   | ![首页](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/index.jpeg?raw=true "首页") | 搜索     | ![搜索](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/search.jpeg?raw=true "搜索")         |
+| 详情页 | ![详情页](https://github.com/Lemon-whales/base-mall/blob/master/preview/jd/detail.png?raw=true "详情页") |  |  |
+
 
 # 使用教程
 
