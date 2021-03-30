@@ -2,14 +2,15 @@
 
 这不仅仅是一个面向于淘客的APP，只是基于淘客数据，真实的数据更加切合项目实战！
 		
-一个基础性商城，promise封装请求，mockServer本地，VueX模块管理数据，BUS传值，mixin混入，各种实用组件，图片懒加载，mixin混入列表加载分页，滑动scroll-tabs,左右联动分类数据接入
+一个基础性商城脚手架，无痛刷新401请求，promise封装请求，mockServer本地，VueX模块管理数据，BUS传值，mixin混入，各种实用组件，图片懒加载，mixin混入列表加载分页，滑动scroll-tabs,左右联动分类数据接入
 		
-淘宝优惠券整体使用uniCloud来完成，后续有时间拓展后台用户管理，购物车云端数据存储，持续更新中....
+淘宝优惠券整体使用uniCloud来完成主要是为了避免H5端接口签名等信息暴露，采用云函数方式，云函数端注入appSecret等参数，后续有时间拓展后台用户管理，购物车云端数据存储，持续更新中....
 淘宝优惠券使用大淘客API接口（http://www.dataoke.com/）
+预览地址：https://static-2ca95cc0-7782-43d9-8895-02ec45e6ebb6.bspapp.com/#/
 
 京东优惠券，前端Promise封装uni.request,京东优惠券板块属于分包的独立板块
 京东优惠券使用京推推API接口（http://www.jingtuitui.com/）
-
+预览微信搜索【独家折扣】
 
 # bus 传值
 
